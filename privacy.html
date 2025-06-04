@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politica de Confidențialitate - Motoshop</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .privacy-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    
+    .privacy-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .privacy-header h1 {
+      color: #2f3542;
+      font-size: 28px;
+    }
+    
+    .privacy-content {
+      line-height: 1.6;
+      color: #555;
+    }
+    
+    .privacy-section {
+      margin-bottom: 25px;
+    }
+    
+    .privacy-section h2 {
+      color: #2f3542;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    
+    .privacy-section h3 {
+      color: #2f3542;
+      font-size: 18px;
+      margin: 20px 0 10px;
+    }
+    
+    .privacy-section p, .privacy-section ul {
+      margin-bottom: 15px;
+    }
+    
+    .privacy-section ul {
+      padding-left: 20px;
+    }
+    
+    .privacy-section li {
+      margin-bottom: 8px;
+    }
+    
+    .last-updated {
+      font-style: italic;
+      color: #777;
+      text-align: right;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="language-selector">
+        Română <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="auth-links">
+        <div id="auth-buttons" style="display: flex; gap: 15px;">
+          <a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="register.html" id="register-link"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+        <div id="user-section" style="display: none; align-items: center; gap: 15px;">
+          <span id="username-display"></span>
+          <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">Motoshop</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Acasă</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contacte</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> Despre noi</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Caută produse...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-link"><i class="fas fa-heart"></i></a>
+        <a href="cart.html" class="icon-link cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="privacy-container">
+    <div class="privacy-header">
+      <h1>Politica de Confidențialitate</h1>
+      <p>Cum protejăm și utilizăm informațiile dumneavoastră personale</p>
+    </div>
+    
+    <div class="privacy-content">
+      <div class="privacy-section">
+        <h2>Introducere</h2>
+        <p>Bun venit la Motoshop! Protejarea confidențialității dumneavoastră este o prioritate pentru noi. Această Politică de Confidențialitate explică cum colectăm, utilizăm, protejăm și divulăm informațiile dumneavoastră personale atunci când utilizați site-ul nostru.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Ce informații colectăm</h2>
+        <p>Putem colecta următoarele tipuri de informații:</p>
+        <ul>
+          <li><strong>Informații personale:</strong> Nume, adresă de e-mail, număr de telefon, adresă de livrare etc., pe care ni le furnizați voluntar la înregistrare sau plasarea unei comenzi.</li>
+          <li><strong>Informații de plată:</strong> Detalii despre cardul de credit sau alte metode de plată, procesate în mod securizat prin intermediul procesatorului nostru de plăți.</li>
+          <li><strong>Informații tehnice:</strong> Adresa IP, tipul browser-ului, dispozitivul utilizat, timpul de acces și paginile vizitate.</li>
+          <li><strong>Cookie-uri și tehnologii similare:</strong> Pentru a îmbunătăți experiența dumneavoastră pe site.</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Cum utilizăm informațiile</h2>
+        <p>Informațiile colectate sunt utilizate pentru:</p>
+        <ul>
+          <li>Prelucrarea și livrarea comenzilor dumneavoastră</li>
+          <li>Îmbunătățirea serviciilor și experienței pe site</li>
+          <li>Comunicări de marketing (doar dacă ați dat consimțământul)</li>
+          <li>Protecția împotriva fraudelor și securitatea tranzacțiilor</li>
+          <li>Conformarea cu obligațiile legale</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Partajarea informațiilor</h2>
+        <p>Nu vindem sau închiriem informațiile dumneavoastră personale către terți. Putem însă partaja informații cu:</p>
+        <ul>
+          <li>Furnizori de servicii care ne ajută în activitatea de business (livrare, procesare plăți etc.)</li>
+          <li>Autoritățile competente, atunci când este cerut prin lege</li>
+          <li>Parteneri de afaceri, în scopuri de marketing (doar cu consimțământul dumneavoastră)</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Securitatea datelor</h2>
+        <p>Implementăm măsuri tehnice și organizaționale adecvate pentru a proteja informațiile dumneavoastră personale împotriva accesului neautorizat, modificării, divulgării sau distrugerii.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Drepturile dumneavoastră</h2>
+        <p>Conform legislației privind protecția datelor, aveți dreptul la:</p>
+        <ul>
+          <li>Acces la informațiile personale pe care le deținem</li>
+          <li>Corectarea informațiilor incorecte</li>
+          <li>Ștergerea datelor ("dreptul de a fi uitat")</li>
+          <li>Restricționarea prelucrării</li>
+          <li>Portabilitatea datelor</li>
+          <li>Opziunea față de marketing direct</li>
+        </ul>
+        <p>Pentru a exercita aceste drepturi, vă rugăm să ne contactați la datele din secțiunea "Contact".</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Cookie-uri</h2>
+        <p>Site-ul nostru utilizează cookie-uri pentru:</p>
+        <ul>
+          <li>Funcționalitatea de bază a site-ului</li>
+          <li>Analiza traficului și îmbunătățirea performanței</li>
+          <li>Personalizarea conținutului</li>
+          <li>Publicitatea targetată</li>
+        </ul>
+        <p>Puteți gestiona preferințele pentru cookie-uri în setările browser-ului dumneavoastră.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Modificări ale politicii</h2>
+        <p>Putem actualiza această Politică de Confidențialitate periodic. Vă vom notifica despre orice modificări semnificative prin intermediul site-ului sau prin e-mail.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>Contact</h2>
+        <p>Dacă aveți întrebări sau nelămuriri cu privire la această Politică de Confidențialitate, vă rugăm să ne contactați:</p>
+        <ul>
+          <li>E-mail: <a href="mailto:protectiedate@motoshop.md">protectiedate@motoshop.md</a></li>
+          <li>Telefon: +373 22 123 456</li>
+          <li>Adresă: str. Exemplu 123, Chișinău, Republica Moldova</li>
+        </ul>
+      </div>
+      
+      <div class="last-updated">
+        Ultima actualizare: 30 mai 2023
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h3>LIVRARE GRATIS ŞI RAPID</h3>
+        <p>Livrare gratis pentru comandă de la 2000$</p>
+        <div class="feature">
+          <h4>Asistenţă tehnică 24/7</h4>
+          <p>Operatorii bine pregătiți la orice întrebare</p>
+        </div>
+        <div class="feature">
+          <h4>Garanţie de la 12 luni</h4>
+          <p>Returnarea produsului în 30 de zile</p>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Motoshop</h3>
+        <div class="newsletter">
+          <h4>Subscribe</h4>
+          <p>Primești 10% reducere</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Introdu Email-ul tău" required>
+            <button type="submit">Trimite</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Support</h3>
+        <address>
+          <p>III Bijby sarani, Dhaka, DH IB15, Bangladesh.</p>
+          <p>exclusive@gmail.com</p>
+          <p>+88015-88888-9999</p>
+        </address>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Account</h3>
+        <ul class="footer-links">
+          <li><a href="account.html">My Account</a></li>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="favorites.html">Wishlist</a></li>
+          <li><a href="products.html">Shop</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Link</h3>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Motoshop. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Script pentru actualizarea numărului de produse în coș
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = JSON.parse(localStorage.getItem('motorshopCart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = cartCount;
+      
+      // Verificare status autentificare
+      checkAuthStatus();
+    });
+
+    function checkAuthStatus() {
+      const isLoggedIn = localStorage.getItem('motorshopUser') !== null;
+      const authButtons = document.getElementById('auth-buttons');
+      const userSection = document.getElementById('user-section');
+      const usernameDisplay = document.getElementById('username-display');
+      
+      if (isLoggedIn) {
+        const user = JSON.parse(localStorage.getItem('motorshopUser'));
+        authButtons.style.display = 'none';
+        userSection.style.display = 'flex';
+        usernameDisplay.textContent = `Bună, ${user.username}`;
+      } else {
+        authButtons.style.display = 'flex';
+        userSection.style.display = 'none';
+      }
+    }
+
+    // Logout functionality
+    document.getElementById('logout-link')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('motorshopUser');
+      checkAuthStatus();
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

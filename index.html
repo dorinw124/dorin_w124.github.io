@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motoshop</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+  
+   
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="language-selector">
+        Română <i class="fas fa-chevron-down"></i>
+      </div>
+     <div class="auth-links">
+  <div id="auth-buttons" style="display: flex; gap: 15px;">
+    <a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="register.html" id="register-link"><i class="fas fa-user-plus"></i> Register</a>
+  </div>
+  <div id="user-section" style="display: none; align-items: center; gap: 15px;">
+    <span id="username-display"></span>
+    <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</div>
+    </div>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">Motoshop</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Acasă</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contacte</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> Despre noi</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Caută produse...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-link"><i class="fas fa-heart"></i></a>
+        <a href="cart.html" class="icon-link cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#" data-category="motociclete"><i class="fas fa-motorcycle"></i> Motociclete <span>›</span></a></li>
+        <li><a href="#" data-category="atv"><i class="fas fa-truck-monster"></i> ATV-uri <span>›</span></a></li>
+        <li><a href="#" data-category="scutere"><i class="fas fa-bicycle"></i> Scutere <span>›</span></a></li>
+      </ul>
+    </aside>
+
+   <!-- Înlocuiește secțiunea caruselului cu aceasta: -->
+<section class="carousel-container">
+  <div class="carousel-slide">
+    <img src="https://motoland.md/_next/image?url=https%3A%2F%2Fadmin.motoland.md%2Fstorage%2Fsliders%2F8Tz44UtyM2WR4l1L4cI2TjVynTKxVANI7qgpIjU6.png&w=1920&q=85" alt="Promoție motociclete" class="active">
+    <img src="https://motoland.md/_next/image?url=https%3A%2F%2Fadmin.motoland.md%2Fstorage%2Fsliders%2FjZzgG18klbkPmODXXCp9GKX7RnqFbQBFNM8UOjqu.png&w=1920&q=85" alt="Oferte ATV">
+    <img src="https://motoland.md/_next/image?url=https%3A%2F%2Fadmin.motoland.md%2Fstorage%2Fsliders%2FGnIutBQP8slU1yX553qrCGPZQVCWMeSyUWWjuBhk.png&w=1920&q=85" alt="Scutere noi">
+  </div>
+  <div class="dots">
+    <span class="dot active" data-slide="0"></span>
+    <span class="dot" data-slide="1"></span>
+    <span class="dot" data-slide="2"></span>
+  </div>
+</section>
+  </div>
+
+  <section class="featured-products">
+    <div class="section-header">
+      <h2>Produse Recomandate</h2>
+    </div>
+    
+    <!-- Filtrele mutate deasupra produselor -->
+    <div class="products-header">
+      <div class="filters-container" id="category-filters">
+        <button class="filter-btn active" data-category="toate">Toate</button>
+        <button class="filter-btn" data-category="motociclete">Motociclete</button>
+        <button class="filter-btn" data-category="atv">ATV-uri</button>
+        <button class="filter-btn" data-category="scutere">Scutere</button>
+      </div>
+    </div>
+    
+    <div class="products-grid" id="products-container">
+      <div class="loading-message">
+        <p>Se încarcă produsele...</p>
+      </div>
+    </div>
+    
+    <!-- Paginare -->
+    <div class="pagination" id="pagination">
+      <!-- Butoanele de pagină vor fi adăugate din JavaScript -->
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h3>LIVRARE GRATIS ŞI RAPID</h3>
+        <p>Livrare gratis pentru comandă de la 2000$</p>
+        <div class="feature">
+          <h4>Asistenţă tehnică 24/7</h4>
+          <p>Operatorii bine pregătiți la orice întrebare</p>
+        </div>
+        <div class="feature">
+          <h4>Garanţie de la 12 luni</h4>
+          <p>Returnarea produsului în 30 de zile</p>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Motoshop</h3>
+        <div class="newsletter">
+          <h4>Subscribe</h4>
+          <p>Primești 10% reducere</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Introdu Email-ul tău" required>
+            <button type="submit">Trimite</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Support</h3>
+        <address>
+          <p>III Bijby sarani, Dhaka, DH IB15, Bangladesh.</p>
+          <p>exclusive@gmail.com</p>
+          <p>+88015-88888-9999</p>
+        </address>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Account</h3>
+        <ul class="footer-links">
+          <li><a href="account.html">My Account</a></li>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="favorites.html">Wishlist</a></li>
+          <li><a href="products.html">Shop</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Link</h3>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Motoshop. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Funcționalitate carusel
+   function initCarousel() {
+  const slides = document.querySelectorAll('.carousel-slide img');
+  const dots = document.querySelectorAll('.dot');
+  let currentSlide = 0;
+  const slideCount = slides.length;
+
+  function showSlide(index) {
+    if (index >= slideCount) currentSlide = 0;
+    else if (index < 0) currentSlide = slideCount - 1;
+    else currentSlide = index;
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function nextSlide() { showSlide(currentSlide + 1); }
+  function prevSlide() { showSlide(currentSlide - 1); }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      showSlide(parseInt(this.dataset.slide));
+    });
+  });
+
+  let slideInterval = setInterval(nextSlide, 5000);
+  const carousel = document.querySelector('.carousel-container');
+  carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+  carousel.addEventListener('mouseleave', () => {
+    slideInterval = setInterval(nextSlide, 5000);
+  });
+}
+
+    // 2. Sistem coș de cumpărături
+    class CartManager {
+      constructor() {
+        this.cart = JSON.parse(localStorage.getItem('motorshopCart')) || [];
+      }
+
+      addToCart(product) {
+        const existingItem = this.cart.find(item => item.id === product.id);
+        if (existingItem) existingItem.quantity++;
+        else this.cart.push({ id: product.id, name: product.nume, price: product.pret, image: product.imagine, quantity: 1 });
+        this.saveCart();
+      }
+
+      saveCart() {
+        localStorage.setItem('motorshopCart', JSON.stringify(this.cart));
+        this.updateCartCount();
+      }
+
+      updateCartCount() {
+        const count = this.cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cart-count').textContent = count;
+      }
+    }
+
+    const cartManager = new CartManager();
+
+    // 3. Încărcare și afișare produse cu paginare
+    const PRODUCTS_PER_PAGE = 8; // Număr de produse pe pagină
+    let currentPage = 1;
+    let allProducts = [];
+    let filteredProducts = [];
+
+    async function loadProducts() {
+      try {
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.innerHTML = '<div class="loading-message"><p>Se încarcă produsele...</p></div>';
+        
+        const response = await fetch('products.json');
+        if (!response.ok) throw new Error('Eroare la încărcarea produselor');
+        allProducts = await response.json();
+        filteredProducts = [...allProducts];
+
+        if (allProducts.length === 0) {
+          productsContainer.innerHTML = '<div class="error-message"><p>Nu există produse disponibile</p></div>';
+          return;
+        }
+
+        displayProducts('toate');
+        setupCategoryFilters();
+        setupPagination();
+
+      } catch (error) {
+        console.error('Eroare:', error);
+        document.getElementById('products-container').innerHTML = `
+          <div class="error-message">
+            <p>Nu s-au putut încărca produsele. Încercați mai târziu.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Manager favorite (adaugă acest cod înainte de addToCart)
+const favoritesManager = {
+  getFavorites: function() {
+    return JSON.parse(localStorage.getItem('motorshopFavorites')) || [];
+  },
+  
+  addFavorite: function(product) {
+    const favorites = this.getFavorites();
+    if (!favorites.some(item => item.id === product.id)) {
+      favorites.push({ id: product.id, nume: product.nume, imagine: product.imagine, pret: product.pret });
+      localStorage.setItem('motorshopFavorites', JSON.stringify(favorites));
+    }
+  },
+  
+  removeFavorite: function(productId) {
+    let favorites = this.getFavorites();
+    favorites = favorites.filter(item => item.id !== productId);
+    localStorage.setItem('motorshopFavorites', JSON.stringify(favorites));
+  },
+  
+  isFavorite: function(productId) {
+    const favorites = this.getFavorites();
+    return favorites.some(item => item.id === productId);
+  }
+};
+
+    function displayProducts(category, page = 1) {
+      currentPage = page;
+      filteredProducts = category === 'toate' 
+        ? [...allProducts] 
+        : allProducts.filter(p => p.categorie === category);
+      
+      const startIndex = (page - 1) * PRODUCTS_PER_PAGE;
+      const endIndex = startIndex + PRODUCTS_PER_PAGE;
+      const productsToShow = filteredProducts.slice(startIndex, endIndex);
+      
+      const productsContainer = document.getElementById('products-container');
+ productsContainer.innerHTML = productsToShow.map(product => `
+  <div class="product-item" data-category="${product.categorie}">
+    <a href="product-details.html?id=${product.id}" class="product-link">
+      <div class="product-image">
+        <img src="${product.imagine}" alt="${product.nume}" loading="lazy">
+        <button class="favorite-btn ${favoritesManager.isFavorite(product.id) ? 'active' : ''}" 
+                data-id="${product.id}">
+          <i class="fas fa-heart"></i>
+        </button>
+      </div>
+      <div class="product-info">
+        <h3>${product.nume}</h3>
+        <div class="price-container">
+          <span class="current-price">$${product.pret}</span>
+          ${product.pret_vechi ? `<span class="old-price">$${product.pret_vechi}</span>` : ''}
+        </div>
+        <div class="rating">
+          ${'★'.repeat(4)}☆ <span class="reviews">(${Math.floor(Math.random() * 100) + 1})</span>
+        </div>
+      </div>
+    </a>
+    <button class="add-to-cart" data-id="${product.id}">
+      <i class="fas fa-shopping-cart"></i> Adaugă în coș
+    </button>
+  </div>
+`).join('');
+       document.querySelectorAll('.favorite-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const productId = parseInt(this.dataset.id);
+      const product = allProducts.find(p => p.id === productId);
+      
+      if (product) {
+        if (favoritesManager.isFavorite(productId)) {
+          favoritesManager.removeFavorite(productId);
+          this.classList.remove('active');
+        } else {
+          favoritesManager.addFavorite(product);
+          this.classList.add('active');
+        }
+      }
+    });
+  });
+
+      setupAddToCartButtons();
+      setupPagination();
+    }
+
+    function setupAddToCartButtons() {
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', async function() {
+          const productId = parseInt(this.dataset.id);
+          const product = allProducts.find(p => p.id === productId);
+          
+          if (product) {
+            cartManager.addToCart(product);
+            this.innerHTML = '<i class="fas fa-check"></i> Adăugat';
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-shopping-cart"></i> Adaugă în coș';
+            }, 2000);
+            
+            if (confirm('Produs adăugat în coș! Doriți să vizualizați coșul?')) {
+              window.location.href = 'cart.html';
+            }
+          }
+        });
+      });
+    }
+
+    function setupCategoryFilters() {
+      const filterButtons = document.querySelectorAll('#category-filters .filter-btn');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const category = this.dataset.category;
+          
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          displayProducts(category, 1); // Resetăm la prima pagină la schimbarea categoriei
+        });
+      });
+    }
+
+    function setupPagination() {
+      const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+      const paginationContainer = document.getElementById('pagination');
+      
+      if (totalPages <= 1) {
+        paginationContainer.innerHTML = '';
+        return;
+      }
+      
+      let paginationHTML = '';
+      
+      // Buton 'Previous'
+      if (currentPage > 1) {
+        paginationHTML += `<button class="page-btn" onclick="changePage(${currentPage - 1})">&laquo;</button>`;
+      }
+      
+      // Butoane numerice
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+          paginationHTML += `<button class="page-btn active">${i}</button>`;
+        } else {
+          paginationHTML += `<button class="page-btn" onclick="changePage(${i})">${i}</button>`;
+        }
+      }
+      
+      // Buton 'Next'
+      if (currentPage < totalPages) {
+        paginationHTML += `<button class="page-btn" onclick="changePage(${currentPage + 1})">&raquo;</button>`;
+      }
+      
+      paginationContainer.innerHTML = paginationHTML;
+    }
+
+    // Funcție globală pentru schimbarea paginii
+    window.changePage = function(page) {
+      const activeFilter = document.querySelector('#category-filters .filter-btn.active');
+      displayProducts(activeFilter.dataset.category, page);
+    }
+
+    // 4. Funcționalitate căutare
+    function setupSearch() {
+      const searchInput = document.getElementById('search-input');
+      const searchButton = document.getElementById('search-button');
+
+      function performSearch() {
+        const term = searchInput.value.trim().toLowerCase();
+        if (term.length < 2) {
+          alert('Introdu minim 2 caractere pentru căutare');
+          return;
+        }
+
+        const results = allProducts.filter(p => 
+          p.nume.toLowerCase().includes(term) || 
+          (p.descriere && p.descriere.toLowerCase().includes(term))
+        );
+
+        if (results.length === 0) {
+          document.getElementById('products-container').innerHTML = '<div class="no-results"><p>Nu s-au găsit produse</p></div>';
+          document.getElementById('pagination').innerHTML = '';
+          return;
+        }
+
+        filteredProducts = results;
+        displayProducts('toate', 1);
+      }
+
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', (e) => e.key === 'Enter' && performSearch());
+    }
+
+    // 5. Inițializare la încărcarea paginii
+    document.addEventListener('DOMContentLoaded', function() {
+      initCarousel();
+      loadProducts();
+      setupSearch();
+      cartManager.updateCartCount();
+    });
+    // 6. Gestionare autentificare
+function checkAuthStatus() {
+  const isLoggedIn = localStorage.getItem('motorshopUser') !== null;
+  const authButtons = document.getElementById('auth-buttons');
+  const userSection = document.getElementById('user-section');
+  const usernameDisplay = document.getElementById('username-display');
+  
+  if (isLoggedIn) {
+    const user = JSON.parse(localStorage.getItem('motorshopUser'));
+    authButtons.style.display = 'none';
+    userSection.style.display = 'block';
+    usernameDisplay.textContent = `Bună, ${user.username}`;
+  } else {
+    authButtons.style.display = 'block';
+    userSection.style.display = 'none';
+  }
+}
+
+// Logout functionality
+document.getElementById('logout-link')?.addEventListener('click', function(e) {
+  e.preventDefault();
+  localStorage.removeItem('motorshopUser');
+  checkAuthStatus();
+  window.location.href = 'index.html';
+});
+
+// Actualizează la încărcarea paginii
+document.addEventListener('DOMContentLoaded', function() {
+  // ... alte inițializări
+  checkAuthStatus();
+});
+  </script>
+  <script src="auth.js"></script>
+</body>
+</html>

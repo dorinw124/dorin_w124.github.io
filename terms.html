@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termeni și Condiții - Motoshop</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .terms-header {
+      background: linear-gradient(135deg, #2f3542 0%, #57606f 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+      border-radius: 0 0 10px 10px;
+    }
+    
+    .terms-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title {
+      color: #2f3542;
+      border-bottom: 2px solid #f1f2f6;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100px;
+      height: 2px;
+      background: #ff4757;
+    }
+    
+    .highlight-box {
+      background-color: #f8f9fa;
+      border-left: 4px solid #ff4757;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 5px 5px 0;
+    }
+    
+    .nav-pills .nav-link.active {
+      background-color: #2f3542;
+    }
+    
+    .nav-pills .nav-link {
+      color: #2f3542;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 991.98px) {
+      .terms-sidebar {
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Motoshop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Acasă</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"><i class="fas fa-envelope me-1"></i> Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> Despre noi</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <a href="favorites.html" class="btn btn-outline-light me-2"><i class="fas fa-heart"></i></a>
+            <a href="cart.html" class="btn btn-outline-light position-relative">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="terms-header">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Termeni și Condiții</h1>
+      <p class="lead">Regulile de utilizare a site-ului nostru</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar Navigation -->
+      <div class="col-lg-3 terms-sidebar">
+        <div class="sticky-top pt-3">
+          <nav id="termsNav" class="nav flex-column nav-pills">
+            <a class="nav-link active" href="#section1">1. Acceptarea termenilor</a>
+            <a class="nav-link" href="#section2">2. Contul utilizatorului</a>
+            <a class="nav-link" href="#section3">3. Comenzi și plăți</a>
+            <a class="nav-link" href="#section4">4. Livrare</a>
+            <a class="nav-link" href="#section5">5. Retururi și garanții</a>
+            <a class="nav-link" href="#section6">6. Proprietate intelectuală</a>
+            <a class="nav-link" href="#section7">7. Limitări de răspundere</a>
+            <a class="nav-link" href="#section8">8. Modificări</a>
+            <a class="nav-link" href="#section9">9. Legislație aplicabilă</a>
+          </nav>
+        </div>
+      </div>
+      
+      <!-- Terms Content -->
+      <div class="col-lg-9">
+        <div class="terms-container">
+          <section id="section1" class="mb-5">
+            <h2 class="section-title">1. Acceptarea termenilor</h2>
+            <p>Prin accesarea și utilizarea site-ului Motoshop („Site-ul”), sunteți de acord să respectați acești Termeni și Condiții („Termenii”), toate legile și reglementările aplicabile și sunteți de acord că sunteți responsabil pentru conformarea cu orice legi locale aplicabile.</p>
+            <div class="highlight-box">
+              <p><strong>Important:</strong> Dacă nu sunteți de acord cu oricare dintre acești termeni, vi se interzice utilizarea sau accesarea acestui site.</p>
+            </div>
+          </section>
+          
+          <section id="section2" class="mb-5">
+            <h2 class="section-title">2. Contul utilizatorului</h2>
+            <p>Pentru a plasa comenzi pe Site, vi se poate cere să vă creați un cont. Sunteți responsabil pentru:</p>
+            <ul class="mb-3">
+              <li>Păstrarea confidențialității informațiilor de conectare</li>
+              <li>Toate activitățile care au loc sub contul dvs.</li>
+              <li>Furnizarea de informații exacte și complete la înregistrare</li>
+            </ul>
+            <p>Ne rezervăm dreptul de a refuza serviciile, de a închide conturi, de a elimina sau edita conținut sau de a anula comenzi la discretia noastră.</p>
+          </section>
+          
+          <section id="section3" class="mb-5">
+            <h2 class="section-title">3. Comenzi și plăți</h2>
+            <p>Plasarea unei comenzi pe Site constituie o ofertă de a cumpăra produsele selectate. Toate comenzile sunt supuse confirmării și acceptării de către noi.</p>
+            <p>Prețurile afișate sunt în <strong>USD</strong> și includ toate taxele, cu excepția cazului în care se specifică altfel. Ne rezervăm dreptul de a modifica prețurile în orice moment fără notificare prealabilă.</p>
+            <div class="table-responsive mb-3">
+              <table class="table table-bordered">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Metodă de plată</th>
+                    <th>Detalii</th>
+                    <th>Procesare</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Card de credit/debit</td>
+                    <td>Visa, Mastercard, Maestro</td>
+                    <td>Imediat</td>
+                  </tr>
+                  <tr>
+                    <td>Transfer bancar</td>
+                    <td>Contul nostru bancar</td>
+                    <td>2-3 zile lucrătoare</td>
+                  </tr>
+                  <tr>
+                    <td>Ramburs</td>
+                    <td>La livrare</td>
+                    <td>După confirmare</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          
+          <section id="section4" class="mb-5">
+            <h2 class="section-title">4. Livrare</h2>
+            <p>Termenele estimate de livrare sunt indicative și nu constituie termene obligatorii. Nu suntem responsabili pentru întârzieri cauzate de factori independenți de noi (de exemplu, condiții vremurale, greve etc.).</p>
+            <p>Costurile de livrare vor fi afișate în timpul procesului de comandă și sunt responsabilitatea clientului, cu excepția cazului în care se specifică altfel.</p>
+          </section>
+          
+          <section id="section5" class="mb-5">
+            <h2 class="section-title">5. Retururi și garanții</h2>
+            <p>Acceptăm returnarea produselor în termen de <strong>14 zile</strong> de la primire, în conformitate cu legislația în vigoare. Produsele returnate trebuie să fie:</p>
+            <ul class="mb-3">
+              <li>În starea originală</li>
+              <li>În ambalajul original</li>
+              <li>Însoțite de toate accesoriile și documentația</li>
+            </ul>
+            <p>Garanțiile pentru produse sunt cele oferite de producător. Vă rugăm să păstrați bonul fiscal sau factura pentru orice cerere de garanție.</p>
+          </section>
+          
+          <section id="section6" class="mb-5">
+            <h2 class="section-title">6. Proprietate intelectuală</h2>
+            <p>Conținutul Site-ului, inclusiv texte, grafice, logo-uri, imagini, compilații de date și software, este proprietatea noastră sau a furnizorilor noștri de conținut și este protejat prin legile drepturilor de autor și ale proprietății intelectuale.</p>
+            <p>Nu aveți dreptul să:</p>
+            <ul>
+              <li>Reproduceți, distribuiți sau modificați conținutul Site-ului fără acordul nostru scris</li>
+              <li>Utilizați orice date de pe Site în scopuri comerciale</li>
+              <li>Utilizați tehnici de crawling sau scraping pentru a extrage date de pe Site</li>
+            </ul>
+          </section>
+          
+          <section id="section7" class="mb-5">
+            <h2 class="section-title">7. Limitări de răspundere</h2>
+            <p>În măsura maximă permisă de lege, Motoshop nu va fi răspunzător pentru:</p>
+            <ul class="mb-3">
+              <li>Orice daune directe, indirecte, accidentale, speciale sau consecvente</li>
+              <li>Pierderi de date, profit sau alte pierderi intangibile</li>
+              <li>Erori sau omisiuni în conținutul Site-ului</li>
+            </ul>
+            <p>Răspunderea noastră este limitată la valoarea produselor achiziționate.</p>
+          </section>
+          
+          <section id="section8" class="mb-5">
+            <h2 class="section-title">8. Modificări</h2>
+            <p>Ne rezervăm dreptul de a modifica acești Termeni în orice moment. Versiunea actualizată a Termenilor va fi postată pe Site și va intra în vigoare imediat după postare.</p>
+            <p>Este responsabilitatea dumneavoastră să verificați periodic acești Termeni pentru modificări. Utilizarea continuată a Site-ului după postarea modificărilor constituie acceptul dumneavoastră al acestor modificări.</p>
+          </section>
+          
+          <section id="section9">
+            <h2 class="section-title">9. Legislație aplicabilă</h2>
+            <p>Acești Termeni sunt guvernați și interpretați în conformitate cu legile Republicii Moldova. Orice dispute vor fi soluționate de instanțele competente din Republica Moldova.</p>
+            <div class="alert alert-info mt-4">
+              <i class="fas fa-info-circle me-2"></i> Dacă aveți întrebări cu privire la acești Termeni, vă rugăm să ne contactați la <a href="mailto:suport@motoshop.md">suport@motoshop.md</a>.
+            </div>
+          </section>
+          
+          <div class="text-muted text-end mt-5">
+            <small>Ultima actualizare: 30 mai 2023</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-4 pb-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5>Motoshop</h5>
+          <p>Magazinul tău online de motociclete, ATV-uri și scutere.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Link-uri rapide</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white">Acasă</a></li>
+            <li><a href="products.html" class="text-white">Produse</a></li>
+            <li><a href="about.html" class="text-white">Despre noi</a></li>
+            <li><a href="contact.html" class="text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Informații</h5>
+          <ul class="list-unstyled">
+            <li><a href="privacy.html" class="text-white">Politica de confidențialitate</a></li>
+            <li><a href="terms.html" class="text-white">Termeni și condiții</a></li>
+            <li><a href="faq.html" class="text-white">Întrebări frecvente</a></li>
+            <li><a href="shipping.html" class="text-white">Livrare și returnări</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Contact</h5>
+          <address>
+            <p><i class="fas fa-map-marker-alt me-2"></i> Str. Exemplu 123, Chișinău</p>
+            <p><i class="fas fa-phone me-2"></i> +373 22 123 456</p>
+            <p><i class="fas fa-envelope me-2"></i> contact@motoshop.md</p>
+          </address>
+        </div>
+      </div>
+      <hr class="my-4 bg-secondary">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2023 Motoshop. Toate drepturile rezervate.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <img src="https://via.placeholder.com/150x50?text=Payment+Methods" alt="Metode de plată" class="img-fluid" style="max-height: 30px;">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update cart count
+      const cart = JSON.parse(localStorage.getItem('motorshopCart')) || [];
+      const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cartCount').textContent = cartCount;
+      
+      // Smooth scroll for terms navigation
+      const termsNavLinks = document.querySelectorAll('#termsNav .nav-link');
+      termsNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          // Update active nav link
+          termsNavLinks.forEach(navLink => navLink.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Scroll to section
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+      });
+      
+      // Update active nav link on scroll
+      window.addEventListener('scroll', function() {
+        const fromTop = window.scrollY + 100;
+        
+        termsNavLinks.forEach(link => {
+          const section = document.querySelector(link.getAttribute('href'));
+          
+          if (
+            section.offsetTop <= fromTop &&
+            section.offsetTop + section.offsetHeight > fromTop
+          ) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

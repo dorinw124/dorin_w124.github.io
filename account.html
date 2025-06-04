@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contul meu - Motoshop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .sidebar-link:hover {
+      color: #3b82f6;
+    }
+    .sidebar-link.active {
+      color: #3b82f6;
+      border-left: 3px solid #3b82f6;
+    }
+    .order-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <header class="bg-white shadow-sm">
+    <div class="bg-gray-800 text-white py-2 px-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="language-selector flex items-center cursor-pointer">
+          Română <i class="fas fa-chevron-down ml-1 text-xs"></i>
+        </div>
+        <div class="auth-links">
+          <div id="auth-buttons" class="flex gap-4">
+            <a href="login.html" id="login-link" class="text-white hover:text-gray-300"><i class="fas fa-sign-in-alt mr-1"></i> Login</a>
+            <a href="register.html" id="register-link" class="text-white hover:text-gray-300"><i class="fas fa-user-plus mr-1"></i> Register</a>
+          </div>
+          <div id="user-section" class="hidden items-center gap-4">
+            <span id="username-display" class="text-white"></span>
+            <a href="#" id="logout-link" class="text-white hover:text-gray-300"><i class="fas fa-sign-out-alt mr-1"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="logo">
+        <a href="index.html" class="text-2xl font-bold text-gray-800">Motoshop</a>
+      </div>
+      <ul class="hidden md:flex space-x-8">
+        <li><a href="index.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-home mr-1"></i> Acasă</a></li>
+        <li><a href="contact.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-envelope mr-1"></i> Contacte</a></li>
+        <li><a href="about.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-info-circle mr-1"></i> Despre noi</a></li>
+      </ul>
+      <div class="flex items-center space-x-4">
+        <div class="hidden md:flex items-center border rounded-md overflow-hidden">
+          <input type="text" placeholder="Caută produse..." class="px-3 py-1 outline-none">
+          <button class="bg-gray-100 px-3 py-1"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="flex space-x-4">
+          <a href="favorites.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-heart"></i></a>
+          <a href="cart.html" class="text-gray-800 hover:text-blue-600 relative">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-white p-4 shadow rounded-lg h-fit">
+      <div class="flex items-center space-x-3 mb-6">
+        <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+          <i class="fas fa-user text-gray-500"></i>
+        </div>
+        <div>
+          <h3 id="account-username" class="font-semibold"></h3>
+          <p class="text-sm text-gray-500">Cont personal</p>
+        </div>
+      </div>
+      <ul class="space-y-2">
+        <li>
+          <a href="account.html" class="block py-2 px-3 sidebar-link active">
+            <i class="fas fa-user-circle mr-2"></i> Date personale
+          </a>
+        </li>
+        <li>
+          <a href="account-orders.html" class="block py-2 px-3 sidebar-link">
+            <i class="fas fa-clipboard-list mr-2"></i> Comenzile mele
+          </a>
+        </li>
+        <li>
+          <a href="account-addresses.html" class="block py-2 px-3 sidebar-link">
+            <i class="fas fa-map-marker-alt mr-2"></i> Adrese
+          </a>
+        </li>
+        <li>
+          <a href="account-password.html" class="block py-2 px-3 sidebar-link">
+            <i class="fas fa-lock mr-2"></i> Schimbă parola
+          </a>
+        </li>
+        <li>
+          <a href="#" id="logout-sidebar-link" class="block py-2 px-3 sidebar-link text-red-500">
+            <i class="fas fa-sign-out-alt mr-2"></i> Deconectare
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <div class="bg-white shadow rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Comenzile mele</h1>
+        
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Comanda #</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acțiuni</th>
+              </tr>
+            </thead>
+            <tbody id="orders-list" class="bg-white divide-y divide-gray-200">
+              <!-- Orders will be loaded here -->
+              <tr>
+                <td colspan="5" class="px-6 py-4 text-center text-gray-500">Se încarcă comenzile...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="no-orders" class="hidden text-center py-12">
+          <i class="fas fa-clipboard-list text-4xl text-gray-300 mb-4"></i>
+          <h3 class="text-lg font-medium text-gray-700">Nu aveți nicio comandă</h3>
+          <p class="text-gray-500 mt-2">Începeți să cumpărați din magazinul nostru</p>
+          <a href="index.html" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Înapoi la magazin</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="bg-gray-800 text-white pt-12 pb-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="col-span-1">
+          <h3 class="text-lg font-semibold mb-4">LIVRARE GRATIS ŞI RAPID</h3>
+          <p class="text-gray-300 mb-4">Livrare gratis pentru comandă de la 2000$</p>
+          <div class="mb-4">
+            <h4 class="font-medium">Asistenţă tehnică 24/7</h4>
+            <p class="text-gray-300">Operatorii bine pregătiți la orice întrebare</p>
+          </div>
+          <div class="mb-4">
+            <h4 class="font-medium">Garanţie de la 12 luni</h4>
+            <p class="text-gray-300">Returnarea produsului în 30 de zile</p>
+          </div>
+        </div>
+        
+        <div class="col-span-1">
+          <h3 class="text-lg font-semibold mb-4">Motoshop</h3>
+          <div class="newsletter">
+            <h4 class="font-medium mb-1">Subscribe</h4>
+            <p class="text-gray-300 mb-3">Primești 10% reducere</p>
+            <form class="flex">
+              <input type="email" placeholder="Introdu Email-ul tău" required class="px-3 py-2 text-gray-800 rounded-l-md flex-1 outline-none">
+              <button type="submit" class="bg-blue-600 px-3 py-2 rounded-r-md hover:bg-blue-700">Trimite</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="col-span-1">
+          <h3 class="text-lg font-semibold mb-4">Support</h3>
+          <address class="text-gray-300 not-italic">
+            <p>III Bijby sarani, Dhaka, DH IB15, Bangladesh.</p>
+            <p class="mt-1">exclusive@gmail.com</p>
+            <p class="mt-1">+88015-88888-9999</p>
+          </address>
+        </div>
+        
+        <div class="col-span-1">
+          <h3 class="text-lg font-semibold mb-4">Account</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="account.html" class="hover:text-white">My Account</a></li>
+            <li><a href="login.html" class="hover:text-white">Login / Register</a></li>
+            <li><a href="cart.html" class="hover:text-white">Cart</a></li>
+            <li><a href="favorites.html" class="hover:text-white">Wishlist</a></li>
+            <li><a href="products.html" class="hover:text-white">Shop</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-span-1">
+          <h3 class="text-lg font-semibold mb-4">Quick Link</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="terms.html" class="hover:text-white">Terms of Use</a></li>
+            <li><a href="faq.html" class="hover:text-white">FAQ</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+        <p>&copy; 2023 Motoshop. Toate drepturile rezervate.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check auth status
+      function checkAuthStatus() {
+        const isLoggedIn = localStorage.getItem('motorshopUser') !== null;
+        const authButtons = document.getElementById('auth-buttons');
+        const userSection = document.getElementById('user-section');
+        const usernameDisplay = document.getElementById('username-display');
+        const accountUsername = document.getElementById('account-username');
+        
+        if (isLoggedIn) {
+          const user = JSON.parse(localStorage.getItem('motorshopUser'));
+          authButtons.style.display = 'none';
+          userSection.style.display = 'flex';
+          usernameDisplay.textContent = `Bună, ${user.username}`;
+          accountUsername.textContent = user.username;
+        } else {
+          // Redirect to login if not logged in
+          window.location.href = 'login.html';
+        }
+      }
+
+      // Logout functionality
+      function setupLogout() {
+        document.getElementById('logout-link')?.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.removeItem('motorshopUser');
+          window.location.href = 'index.html';
+        });
+        
+        document.getElementById('logout-sidebar-link')?.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.removeItem('motorshopUser');
+          window.location.href = 'index.html';
+        });
+      }
+
+      // Load orders for current user from localStorage
+      function loadUserOrders() {
+        const currentUser = JSON.parse(localStorage.getItem('motorshopUser'));
+        if (!currentUser) return;
+        
+        const allOrders = JSON.parse(localStorage.getItem('motorshopOrders')) || [];
+        const userOrders = allOrders.filter(order => order.userId === currentUser.id);
+        
+        const ordersList = document.getElementById('orders-list');
+        const noOrders = document.getElementById('no-orders');
+        
+        if (userOrders.length === 0) {
+          ordersList.innerHTML = '';
+          noOrders.classList.remove('hidden');
+          return;
+        }
+        
+        // Sort orders by date (newest first)
+        userOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        ordersList.innerHTML = userOrders.map(order => `
+          <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm font-medium text-blue-600">#${order.id}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-900">${new Date(order.date).toLocaleDateString('ro-RO')}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                ${order.status === 'Finalizată' ? 'bg-green-100 text-green-800' : 
+                  order.status === 'În procesare' ? 'bg-yellow-100 text-yellow-800' : 
+                  'bg-red-100 text-red-800'}">
+                ${order.status}
+              </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              $${order.total.toLocaleString('ro-RO')}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <a href="order-details.html?id=${order.id}" class="text-blue-600 hover:text-blue-900 mr-3">Detalii</a>
+              ${order.status === 'În procesare' ? 
+                `<a href="#" class="text-red-600 hover:text-red-900" data-id="${order.id}">Anulează</a>` : 
+                ''}
+            </td>
+          </tr>
+        `).join('');
+        
+        // Add event listeners for cancel buttons
+        document.querySelectorAll('[data-id]').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const orderId = this.getAttribute('data-id');
+            if (confirm('Sigur doriți să anulați această comandă?')) {
+              cancelOrder(orderId);
+            }
+          });
+        });
+      }
+      
+      // Cancel an order
+      function cancelOrder(orderId) {
+        let allOrders = JSON.parse(localStorage.getItem('motorshopOrders')) || [];
+        const orderIndex = allOrders.findIndex(order => order.id === orderId);
+        
+        if (orderIndex !== -1) {
+          allOrders[orderIndex].status = 'Anulată';
+          localStorage.setItem('motorshopOrders', JSON.stringify(allOrders));
+          loadUserOrders();
+        }
+      }
+      
+      // Update cart count
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('motorshopCart')) || [];
+        const count = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+        document.getElementById('cart-count').textContent = count;
+      }
+
+      // Initialize
+      checkAuthStatus();
+      setupLogout();
+      loadUserOrders();
+      updateCartCount();
+    });
+
+    // Funcție pentru a salva o comandă nouă (de utilizat în cart.html)
+    function saveOrder(cartItems, total) {
+      const currentUser = JSON.parse(localStorage.getItem('motorshopUser'));
+      if (!currentUser) return false;
+      
+      const allOrders = JSON.parse(localStorage.getItem('motorshopOrders')) || [];
+      
+      const newOrder = {
+        id: 'ORD-' + Math.floor(Math.random() * 1000000),
+        userId: currentUser.id,
+        date: new Date().toISOString(),
+        status: 'În procesare',
+        total: total,
+        items: cartItems.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }))
+      };
+      
+      allOrders.push(newOrder);
+      localStorage.setItem('motorshopOrders', JSON.stringify(allOrders));
+      return true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coș de cumpărături - Motoshop</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+ <style>
+    /* Stiluri specifice pentru pagina de coș */
+    .cart-container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .breadcrumb a {
+      color: #333;
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    
+    .cart-table th {
+      text-align: left;
+      padding: 15px 10px;
+      background-color: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .cart-table td {
+      padding: 15px 10px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+    
+    .product-cell {
+      display: flex;
+      align-items: center;
+    }
+    
+    .product-cell img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 1px solid #eee;
+    }
+    
+    .quantity-input {
+      width: 60px;
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .remove-product {
+      color: #ff0000;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .cart-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    .btn-outline {
+      background: none;
+      border: 1px solid #333;
+      color: #333;
+    }
+    
+    .btn-outline:hover {
+      background: #333;
+      color: #fff;
+    }
+    
+    .btn-primary {
+      background: #333;
+      color: #fff;
+    }
+    
+    .btn-primary:hover {
+      background: #555;
+    }
+    
+    .coupon-section {
+      display: flex;
+      margin-bottom: 30px;
+    }
+    
+    .coupon-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      max-width: 300px;
+    }
+    
+    .cart-totals {
+      float: right;
+      width: 350px;
+      background: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #eee;
+    }
+    
+    .cart-totals h3 {
+      margin-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+    }
+    
+    .totals-row.total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .checkout-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+    }
+    
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* Formular de checkout */
+    .checkout-form {
+      display: none;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      border-radius: 5px;
+    }
+    
+    .checkout-form h2 {
+      margin-top: 0;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    /* Mesaj de succes */
+    .success-message {
+      text-align: center;
+      padding: 100px 20px;
+      display: none;
+     
+     
+    }
+    
+    .success-message i {
+      font-size: 50px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="language-selector">
+        Română <i class="fas fa-chevron-down"></i>
+      </div>
+   <div class="auth-links">
+  <div id="auth-buttons" style="display: flex; gap: 15px;">
+    <a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="register.html" id="register-link"><i class="fas fa-user-plus"></i> Register</a>
+  </div>
+  <div id="user-section" style="display: none; align-items: center; gap: 15px;">
+    <span id="username-display"></span>
+    <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</div>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">Motoshop</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Acasă</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contacte</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> Despre noi</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Caută produse...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-link"><i class="fas fa-heart"></i></a>
+        <a href="cart.html" class="icon-link cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="cart-container">
+    <div class="breadcrumb">
+      <a href="index.html">Acasă</a> / <span>Coș</span>
+    </div>
+    
+    <h1>Coșul tău de cumpărături</h1>
+    
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Produs</th>
+          <th>Preț</th>
+          <th>Cantitate</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Aici vor fi adăugate produsele din coș -->
+      </tbody>
+    </table>
+    
+    <div class="cart-actions">
+      <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Continuă cumpărăturile</a>
+      <button class="btn btn-outline" id="update-cart"><i class="fas fa-sync-alt"></i> Actualizează coșul</button>
+    </div>
+    
+    <div class="coupon-section">
+      <input type="text" class="coupon-input" placeholder="Cod coupon">
+      <button class="btn btn-primary" id="apply-coupon">Aplică coupon</button>
+    </div>
+    
+    <div class="clearfix">
+      <div class="cart-totals">
+        <h3>Total coș</h3>
+        <div class="totals-row">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal">$0</span>
+        </div>
+        <div class="totals-row">
+          <span>Livrare:</span>
+          <span>Gratuită</span>
+        </div>
+        <div class="totals-row total">
+          <span>Total:</span>
+          <span id="cart-total">$0</span>
+        </div>
+        <button class="btn btn-primary checkout-btn" id="checkout-btn">Finalizează comanda</button>
+      </div>
+    </div>
+    
+    <!-- Formular de checkout -->
+    <div class="checkout-form" id="checkout-form">
+      <h2>Finalizare comandă</h2>
+      <form id="payment-form">
+        <div class="form-group">
+          <label for="card-name">Numele de pe card</label>
+          <input type="text" id="card-name" class="form-control" placeholder="ION POPESCU" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="card-number">Număr card</label>
+          <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="card-expiry">Data expirării</label>
+            <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA" required>
+          </div>
+          <div class="form-group">
+            <label for="card-cvv">CVV</label>
+            <input type="text" id="card-cvv" class="form-control" placeholder="123" required>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Plasează comanda</button>
+      </form>
+    </div>
+    
+    <!-- Mesaj de succes -->
+    <div class="success-message" id="success-message">
+      <i class="fas fa-check-circle"></i>
+      <h2>Comanda a fost plasată cu succes!</h2>
+      <p>Vă mulțumim pentru cumpărături. Un email de confirmare a fost trimis.</p>
+      <a href="index.html" class="btn btn-primary">Înapoi la magazin</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h3>LIVRARE GRATIS ŞI RAPID</h3>
+        <p>Livrare gratis pentru comandă de la 2000$</p>
+        <div class="feature">
+          <h4>Asistenţă tehnică 24/7</h4>
+          <p>Operatorii bine pregătiți la orice întrebare</p>
+        </div>
+        <div class="feature">
+          <h4>Garanţie de la 12 luni</h4>
+          <p>Returnarea produsului în 30 de zile</p>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Motoshop</h3>
+        <div class="newsletter">
+          <h4>Subscribe</h4>
+          <p>Primești 10% reducere</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Introdu Email-ul tău" required>
+            <button type="submit">Trimite</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Support</h3>
+        <address>
+          <p>III Bijby sarani, Dhaka, DH IB15, Bangladesh.</p>
+          <p>exclusive@gmail.com</p>
+          <p>+88015-88888-9999</p>
+        </address>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Account</h3>
+        <ul class="footer-links">
+          <li><a href="account.html">My Account</a></li>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="favorites.html">Wishlist</a></li>
+          <li><a href="products.html">Shop</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Link</h3>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Motoshop. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Manager coș de cumpărături
+      const cartManager = {
+        getCart: function() {
+          return JSON.parse(localStorage.getItem('motorshopCart')) || [];
+        },
+        
+        updateCart: function(cart) {
+          localStorage.setItem('motorshopCart', JSON.stringify(cart));
+          this.updateCartCount();
+        },
+        
+        clearCart: function() {
+          localStorage.removeItem('motorshopCart');
+          this.updateCartCount();
+        },
+        
+        updateCartCount: function() {
+          const cart = this.getCart();
+          const count = cart.reduce((total, item) => total + item.quantity, 0);
+          document.getElementById('cart-count').textContent = count;
+        },
+        
+        removeItem: function(productId) {
+          let cart = this.getCart();
+          cart = cart.filter(item => item.id !== productId);
+          this.updateCart(cart);
+        },
+        
+        updateItemQuantity: function(productId, quantity) {
+          let cart = this.getCart();
+          const item = cart.find(item => item.id === productId);
+          if (item) {
+            item.quantity = quantity;
+            this.updateCart(cart);
+          }
+        }
+      };
+
+      // Afișează produsele din coș
+      function displayCartItems() {
+        const cart = cartManager.getCart();
+        const cartItemsContainer = document.getElementById('cart-items');
+        
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = '<tr><td colspan="4" style="text-align: center;">Coșul tău este gol</td></tr>';
+          document.querySelector('.cart-totals').style.display = 'none';
+          document.querySelector('.cart-actions').style.display = 'none';
+          document.querySelector('.coupon-section').style.display = 'none';
+          return;
+        }
+        
+        cartItemsContainer.innerHTML = cart.map(item => `
+          <tr>
+            <td>
+              <div class="product-cell">
+                <img src="${item.image}" alt="${item.name}">
+                <div>
+                  <h4>${item.name}</h4>
+                  <button class="remove-product" data-id="${item.id}">
+                    <i class="fas fa-times"></i> Elimină
+                  </button>
+                </div>
+              </div>
+            </td>
+            <td>$${item.price.toLocaleString()}</td>
+            <td>
+              <input type="number" class="quantity-input" 
+                     value="${item.quantity}" min="1" data-id="${item.id}">
+            </td>
+            <td class="item-subtotal">$${(item.price * item.quantity).toLocaleString()}</td>
+          </tr>
+        `).join('');
+        
+        updateCartTotals();
+        
+        // Adaugă evenimente pentru butoanele de eliminare
+        document.querySelectorAll('.remove-product').forEach(button => {
+          button.addEventListener('click', function() {
+            const productId = parseInt(this.dataset.id);
+            cartManager.removeItem(productId);
+            displayCartItems();
+          });
+        });
+        
+        // Adaugă evenimente pentru input-urile de cantitate
+        document.querySelectorAll('.quantity-input').forEach(input => {
+          input.addEventListener('change', function() {
+            const productId = parseInt(this.dataset.id);
+            const quantity = parseInt(this.value);
+            cartManager.updateItemQuantity(productId, quantity);
+            updateCartTotals();
+          });
+        });
+      }
+      
+      // Actualizează totalurile coșului
+      function updateCartTotals() {
+        const cart = cartManager.getCart();
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        document.getElementById('cart-subtotal').textContent = `$${subtotal.toLocaleString()}`;
+        document.getElementById('cart-total').textContent = `$${subtotal.toLocaleString()}`;
+      }
+      
+      // Butonul de actualizare coș
+      document.getElementById('update-cart').addEventListener('click', function() {
+        displayCartItems();
+        alert('Coșul a fost actualizat!');
+      });
+      
+      // Butonul de aplicare coupon
+      document.getElementById('apply-coupon').addEventListener('click', function() {
+        const couponInput = document.querySelector('.coupon-input');
+        const couponCode = couponInput.value.trim();
+        
+        if (couponCode === '') {
+          alert('Introdu un cod coupon');
+          return;
+        }
+        
+        // Aici poți adăuga logica pentru verificarea couponului
+        alert('Couponul "' + couponCode + '" a fost aplicat!');
+      });
+      
+      // Butonul de finalizare comanda
+      document.getElementById('checkout-btn').addEventListener('click', function() {
+        if (cartManager.getCart().length === 0) {
+          alert('Coșul tău este gol!');
+          return;
+        }
+        
+        document.querySelector('.cart-table').style.display = 'none';
+        document.querySelector('.cart-actions').style.display = 'none';
+        document.querySelector('.coupon-section').style.display = 'none';
+        document.querySelector('.cart-totals').style.display = 'none';
+        document.getElementById('checkout-form').style.display = 'block';
+      });
+      
+      // Formularul de plată
+      document.getElementById('payment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simulează procesarea plății
+        setTimeout(() => {
+          document.getElementById('checkout-form').style.display = 'none';
+          document.getElementById('success-message').style.display = 'block';
+          
+          // Golește coșul
+          cartManager.clearCart();
+        }, 1500);
+      });
+      
+      // Inițializare
+      displayCartItems();
+      cartManager.updateCartCount();
+       checkAuthStatus();
+    });
+  </script>
+  <script src="auth.js"></script>
+</body>
+</html>

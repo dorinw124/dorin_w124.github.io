@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacte - Motoshop</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .leaflet-container {
+      height: 400px;
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+  </style>
+  <!-- Leaflet CSS pentru harta -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="language-selector">
+        Română <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="auth-links">
+        <div id="auth-buttons" style="display: flex; gap: 15px;">
+          <a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="register.html" id="register-link"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+        <div id="user-section" style="display: none; align-items: center; gap: 15px;">
+          <span id="username-display"></span>
+          <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">Motoshop</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Acasă</a></li>
+        <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contacte</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> Despre noi</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Caută produse...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-link"><i class="fas fa-heart"></i></a>
+        <a href="cart.html" class="icon-link cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#" data-category="motociclete"><i class="fas fa-motorcycle"></i> Motociclete <span>›</span></a></li>
+        <li><a href="#" data-category="atv"><i class="fas fa-truck-monster"></i> ATV-uri <span>›</span></a></li>
+        <li><a href="#" data-category="scutere"><i class="fas fa-bicycle"></i> Scutere <span>›</span></a></li>
+      </ul>
+    </aside>
+
+    <main class="contact-content">
+      <section class="contact-hero">
+        <h1>Contactează-ne</h1>
+        <p>Suntem mereu aici pentru a-ți răspunde la întrebări și a te ajuta cu orice ai nevoie</p>
+      </section>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Adresa noastră</h3>
+            <p>Strada Motocicletelor 15, București, Sector 3</p>
+          </div>
+          
+          <div class="info-card">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Telefon</h3>
+            <p>+40 721 123 456 (Vânzări)</p>
+            <p>+40 722 987 654 (Asistență)</p>
+          </div>
+          
+          <div class="info-card">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>vanzari@motoshop.ro</p>
+            <p>support@motoshop.ro</p>
+          </div>
+          
+          <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h3>Program</h3>
+            <p><strong>Luni-Vineri:</strong> 9:00 - 18:00</p>
+            <p><strong>Sâmbătă:</strong> 10:00 - 15:00</p>
+            <p><strong>Duminică:</strong> Închis</p>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <h2>Trimite-ne un mesaj</h2>
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="name">Nume complet*</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subiect*</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Selectează...</option>
+                <option value="intrebare">Întrebare despre produs</option>
+                <option value="comanda">Stare comandă</option>
+                <option value="garantie">Problemă garanție</option>
+                <option value="alta">Altă întrebare</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mesajul tău*</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Trimite mesaj</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <h2>Ne găsești aici</h2>
+        <div id="map"></div>
+      </div>
+
+      <section class="faq-section">
+        <h2>Întrebări frecvente</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question">
+              Care sunt metodele de plată acceptate?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Acceptăm plăți cu cardul (Visa, Mastercard), transfer bancar și ramburs la livrare. Pentru comenzile online, oferim și opțiunea de plată prin PayPal.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              Cât durează livrarea?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Livrările în București se efectuează în 1-2 zile lucrătoare. Pentru restul țării, termenul este de 2-4 zile lucrătoare. Pentru produsele comandate din stoc, livrarea este mai rapidă.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              Cum pot returna un produs?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Puteți returna orice produs în termen de 14 zile de la primire, în ambalajul original și cu factura. Contactați-ne mai întâi pentru a iniția procesul de returnare.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              Unde pot verifica starea comenzii mele?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Puteți verifica starea comenzii în contul dvs. din secțiunea "Comenzile mele" sau ne puteți contacta telefonic sau prin email cu numărul de comandă.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h3>LIVRARE GRATIS ŞI RAPID</h3>
+        <p>Livrare gratis pentru comandă de la 2000$</p>
+        <div class="feature">
+          <h4>Asistenţă tehnică 24/7</h4>
+          <p>Operatorii bine pregătiți la orice întrebare</p>
+        </div>
+        <div class="feature">
+          <h4>Garanţie de la 12 luni</h4>
+          <p>Returnarea produsului în 30 de zile</p>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Motoshop</h3>
+        <div class="newsletter">
+          <h4>Subscribe</h4>
+          <p>Primești 10% reducere</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Introdu Email-ul tău" required>
+            <button type="submit">Trimite</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Support</h3>
+        <address>
+          <p>III Bijby sarani, Dhaka, DH IB15, Bangladesh.</p>
+          <p>exclusive@gmail.com</p>
+          <p>+88015-88888-9999</p>
+        </address>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Account</h3>
+        <ul class="footer-links">
+          <li><a href="account.html">My Account</a></li>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="favorites.html">Wishlist</a></li>
+          <li><a href="products.html">Shop</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Link</h3>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Motoshop. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS pentru harta -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <script>
+    // Funcționalitate coș de cumpărături
+    class CartManager {
+      constructor() {
+        this.cart = JSON.parse(localStorage.getItem('motorshopCart')) || [];
+      }
+
+      updateCartCount() {
+        const count = this.cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cart-count').textContent = count;
+      }
+    }
+
+    const cartManager = new CartManager();
+
+    // Gestionare autentificare
+    function checkAuthStatus() {
+      const isLoggedIn = localStorage.getItem('motorshopUser') !== null;
+      const authButtons = document.getElementById('auth-buttons');
+      const userSection = document.getElementById('user-section');
+      const usernameDisplay = document.getElementById('username-display');
+      
+      if (isLoggedIn) {
+        const user = JSON.parse(localStorage.getItem('motorshopUser'));
+        authButtons.style.display = 'none';
+        userSection.style.display = 'flex';
+        usernameDisplay.textContent = `Bună, ${user.username}`;
+      } else {
+        authButtons.style.display = 'flex';
+        userSection.style.display = 'none';
+      }
+    }
+
+    // Logout functionality
+    document.getElementById('logout-link')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('motorshopUser');
+      checkAuthStatus();
+      window.location.href = 'index.html';
+    });
+
+    // Funcționalitate căutare
+    function setupSearch() {
+      const searchInput = document.getElementById('search-input');
+      const searchButton = document.getElementById('search-button');
+
+      function performSearch() {
+        const term = searchInput.value.trim();
+        if (term.length > 0) {
+          window.location.href = `products.html?search=${encodeURIComponent(term)}`;
+        }
+      }
+
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', (e) => e.key === 'Enter' && performSearch());
+    }
+
+    // Inițializare hartă
+    function initMap() {
+      const map = L.map('map').setView([44.4268, 26.1025], 15); // Coordonate pentru București
+      
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      L.marker([44.4268, 26.1025]).addTo(map)
+        .bindPopup('Motoshop<br>Strada Motocicletelor 15')
+        .openPopup();
+    }
+
+    // Funcționalitate FAQ accordion
+    function setupFAQ() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const item = question.parentElement;
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector('i');
+          
+          // Închide toate celelalte întrebări
+          document.querySelectorAll('.faq-item').forEach(faqItem => {
+            if (faqItem !== item) {
+              faqItem.classList.remove('active');
+              faqItem.querySelector('.faq-answer').style.maxHeight = null;
+              faqItem.querySelector('i').classList.remove('fa-chevron-up');
+              faqItem.querySelector('i').classList.add('fa-chevron-down');
+            }
+          });
+          
+          // Comută starea întrebării curente
+          item.classList.toggle('active');
+          
+          if (item.classList.contains('active')) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+          } else {
+            answer.style.maxHeight = null;
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+          }
+        });
+      });
+    }
+
+    // Trimitere formular contact
+    function setupContactForm() {
+      const contactForm = document.getElementById('contactForm');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Aici ai putea adăuga validare suplimentară
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value
+        };
+        
+        // În loc de trimitere reală, doar afișăm un mesaj
+        alert('Mesajul tău a fost trimis cu succes! Vom reveni în cel mai scurt timp.');
+        contactForm.reset();
+        
+        // Într-o implementare reală, aici ai face un fetch() către server
+        // pentru a trimite datele formularului
+      });
+    }
+
+    // Inițializare la încărcarea paginii
+    document.addEventListener('DOMContentLoaded', function() {
+      cartManager.updateCartCount();
+      checkAuthStatus();
+      setupSearch();
+      initMap();
+      setupFAQ();
+      setupContactForm();
+    });
+  </script>
+</body>
+</html>

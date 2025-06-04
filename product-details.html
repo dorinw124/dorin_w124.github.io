@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalii Produs - Motoshop</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="language-selector">
+        Română <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="auth-links">
+        <div id="auth-buttons" style="display: flex; gap: 15px;">
+          <a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="register.html" id="register-link"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+        <div id="user-section" style="display: none; align-items: center; gap: 15px;">
+          <span id="username-display"></span>
+          <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">Motoshop</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Acasă</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contacte</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> Despre noi</a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Caută produse...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <a href="favorites.html" class="icon-link"><i class="fas fa-heart"></i></a>
+        <a href="cart.html" class="icon-link cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="product-details-container">
+    <div class="breadcrumbs">
+      <a href="index.html">Acasă</a> &gt; 
+      <a href="#" id="product-category-link">Categorie</a> &gt; 
+      <span id="product-name-breadcrumb">Nume Produs</span>
+    </div>
+
+    <div class="product-details-content">
+      <div class="product-gallery">
+        <div class="main-image">
+          <img id="main-product-image" src="" alt="Imagine principală produs">
+        </div>
+        <div class="thumbnail-images">
+          <!-- Thumbnail images will be added by JavaScript -->
+        </div>
+      </div>
+
+      <div class="product-info">
+        <h1 id="product-name"></h1>
+        <div class="product-meta">
+          <div class="rating">
+            <span id="product-rating"></span>
+            <span class="reviews" id="product-reviews"></span>
+          </div>
+          <div class="sku">SKU: <span id="product-sku"></span></div>
+          <div class="availability" id="product-availability"></div>
+        </div>
+
+        <div class="price-container">
+          <span class="current-price" id="product-price"></span>
+          <span class="old-price" id="product-old-price"></span>
+          <span class="discount" id="product-discount"></span>
+        </div>
+
+        <div class="product-description" id="product-description"></div>
+
+        <div class="product-actions">
+          <div class="quantity-selector">
+            <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+            <input type="number" id="product-quantity" value="1" min="1">
+            <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+          </div>
+          <button id="add-to-cart-btn" class="btn-primary">
+            <i class="fas fa-shopping-cart"></i> Adaugă în coș
+          </button>
+          <button id="add-to-wishlist" class="btn-secondary">
+            <i class="fas fa-heart"></i> Adaugă la favorite
+          </button>
+        </div>
+
+        <div class="product-meta-footer">
+          <div class="meta-item">
+            <i class="fas fa-truck"></i>
+            <span>Livrare în 2-3 zile lucrătoare</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Garanție 24 luni</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-undo"></i>
+            <span>Returnare în 14 zile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-tabs">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="description">Descriere</button>
+        <button class="tab-btn" data-tab="specs">Specificații</button>
+        <button class="tab-btn" data-tab="reviews">Recenzii</button>
+      </div>
+      
+      <div class="tabs-content">
+        <div id="description-tab" class="tab-pane active">
+          <div id="detailed-description"></div>
+        </div>
+        
+        <div id="specs-tab" class="tab-pane">
+          <table class="specs-table">
+            <tbody id="product-specs">
+              <!-- Specifications will be added by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="reviews-tab" class="tab-pane">
+          <div class="reviews-container">
+            <div class="reviews-summary">
+              <div class="average-rating">
+                <span class="rating-value" id="average-rating"></span>
+                <span class="rating-stars"></span>
+                <span class="total-reviews" id="total-reviews"></span>
+              </div>
+              <button class="btn-primary" id="write-review-btn">Scrie o recenzie</button>
+            </div>
+            <div class="reviews-list" id="reviews-list">
+              <!-- Reviews will be added by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="related-products">
+      <h2>Produse similare</h2>
+      <div class="products-grid" id="related-products">
+        <!-- Related products will be added by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Same footer as index.html -->
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get product ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get('id'));
+      
+      // Load product data
+      fetch('products.json')
+        .then(response => response.json())
+        .then(products => {
+          const product = products.find(p => p.id === productId);
+          if (!product) {
+            document.querySelector('main').innerHTML = `
+              <div class="error-message">
+                <h2>Produsul nu a fost găsit</h2>
+                <p>Ne pare rău, produsul pe care îl căutați nu există sau a fost eliminat.</p>
+                <a href="index.html" class="btn-primary">Întoarce-te la magazin</a>
+              </div>
+            `;
+            return;
+          }
+          
+          // Display product details
+          displayProductDetails(product);
+          
+          // Find related products (same category)
+          const relatedProducts = products
+            .filter(p => p.categorie === product.categorie && p.id !== product.id)
+            .slice(0, 4);
+          
+          displayRelatedProducts(relatedProducts);
+        })
+        
+        .catch(error => {
+          console.error('Error loading product:', error);
+          document.querySelector('main').innerHTML = `
+            <div class="error-message">
+              <h2>Eroare la încărcarea produsului</h2>
+              <p>A apărut o eroare la încărcarea detaliilor produsului. Vă rugăm să încercați mai târziu.</p>
+              <a href="index.html" class="btn-primary">Întoarce-te la magazin</a>
+            </div>
+          `;
+        });
+      
+      // Initialize cart manager
+      class CartManager {
+        constructor() {
+          this.cart = JSON.parse(localStorage.getItem('motorshopCart')) || [];
+        }
+
+        addToCart(product, quantity = 1) {
+          const existingItem = this.cart.find(item => item.id === product.id);
+          if (existingItem) {
+            existingItem.quantity += quantity;
+          } else {
+            this.cart.push({ 
+              id: product.id, 
+              name: product.nume, 
+              price: product.pret, 
+              image: product.imagine, 
+              quantity: quantity 
+            });
+          }
+          this.saveCart();
+        }
+
+        saveCart() {
+          localStorage.setItem('motorshopCart', JSON.stringify(this.cart));
+          this.updateCartCount();
+        }
+
+        updateCartCount() {
+          const count = this.cart.reduce((total, item) => total + item.quantity, 0);
+          document.getElementById('cart-count').textContent = count;
+        }
+      }
+
+      const cartManager = new CartManager();
+      cartManager.updateCartCount();
+
+      // Setup quantity selector
+      document.querySelector('.quantity-selector').addEventListener('click', function(e) {
+        const input = document.getElementById('product-quantity');
+        if (e.target.classList.contains('minus')) {
+          input.value = Math.max(1, parseInt(input.value) - 1);
+        } else if (e.target.classList.contains('plus')) {
+          input.value = parseInt(input.value) + 1;
+        }
+      });
+
+      // Setup tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const tabId = this.dataset.tab;
+          
+          // Update active tab button
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Update active tab content
+          document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+          document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+      });
+
+      // Setup add to cart button
+      document.getElementById('add-to-cart-btn')?.addEventListener('click', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        const quantity = parseInt(document.getElementById('product-quantity').value);
+        
+        fetch('products.json')
+          .then(response => response.json())
+          .then(products => {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+              cartManager.addToCart(product, quantity);
+              
+              // Update button temporarily
+              this.innerHTML = '<i class="fas fa-check"></i> Adăugat în coș';
+              setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-shopping-cart"></i> Adaugă în coș';
+              }, 2000);
+              
+              // Update cart count
+              cartManager.updateCartCount();
+              
+              // Show confirmation
+              if (confirm('Produsul a fost adăugat în coș. Doriți să vizualizați coșul acum?')) {
+                window.location.href = 'cart.html';
+              }
+            }
+          });
+      });
+
+      // Setup add to wishlist button
+     document.getElementById('add-to-wishlist')?.addEventListener('click', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = parseInt(urlParams.get('id'));
+  
+  fetch('products.json')
+    .then(response => response.json())
+    .then(products => {
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        if (favoritesManager.isFavorite(productId)) {
+          favoritesManager.removeFavorite(productId);
+          this.innerHTML = '<i class="fas fa-heart"></i> Adaugă la favorite';
+        } else {
+          favoritesManager.addFavorite(product);
+          this.innerHTML = '<i class="fas fa-check"></i> Adăugat la favorite';
+        }
+      }
+    });
+});
+
+      // Check auth status (same as index.html)
+      function checkAuthStatus() {
+        const isLoggedIn = localStorage.getItem('motorshopUser') !== null;
+        const authButtons = document.getElementById('auth-buttons');
+        const userSection = document.getElementById('user-section');
+        const usernameDisplay = document.getElementById('username-display');
+        
+        if (isLoggedIn) {
+          const user = JSON.parse(localStorage.getItem('motorshopUser'));
+          authButtons.style.display = 'none';
+          userSection.style.display = 'flex';
+          usernameDisplay.textContent = `Bună, ${user.username}`;
+        } else {
+          authButtons.style.display = 'flex';
+          userSection.style.display = 'none';
+        }
+      }
+
+      // Logout functionality
+      document.getElementById('logout-link')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.removeItem('motorshopUser');
+        checkAuthStatus();
+        window.location.href = 'index.html';
+      });
+
+      checkAuthStatus();
+    });
+class FavoritesManager {
+  constructor() {
+    this.favorites = JSON.parse(localStorage.getItem('motorshopFavorites')) || [];
+  }
+
+  isFavorite(productId) {
+    return this.favorites.some(item => item.id === productId);
+  }
+
+  addFavorite(product) {
+    if (!this.isFavorite(product.id)) {
+      this.favorites.push({
+        id: product.id,
+        name: product.nume,
+        price: product.pret,
+        image: product.imagine
+      });
+      this.saveFavorites();
+    }
+  }
+
+  removeFavorite(productId) {
+    this.favorites = this.favorites.filter(item => item.id !== productId);
+    this.saveFavorites();
+  }
+
+  saveFavorites() {
+    localStorage.setItem('motorshopFavorites', JSON.stringify(this.favorites));
+  }
+}
+
+const favoritesManager = new FavoritesManager();
+    function displayProductDetails(product) {
+      // Set page title
+  document.title = `${product.nume} | Motoshop`;
+  
+  // Actualizează butonul de favorite
+  const favoriteBtn = document.getElementById('add-to-wishlist');
+  if (favoritesManager.isFavorite(product.id)) {
+    favoriteBtn.innerHTML = '<i class="fas fa-check"></i> Adăugat la favorite';
+  } else {
+    favoriteBtn.innerHTML = '<i class="fas fa-heart"></i> Adaugă la favorite';
+  }
+  
+  // Set breadcrumbs
+  document.getElementById('product-name-breadcrumb').textContent = product.nume;
+  document.getElementById('product-category-link').textContent = 
+    product.categorie === 'motociclete' ? 'Motociclete' : 
+    product.categorie === 'atv' ? 'ATV-uri' : 'Scutere';
+      document.getElementById('product-category-link').href = 
+        `index.html?category=${product.categorie}`;
+      
+      // Set main product info
+      document.getElementById('product-name').textContent = product.nume;
+      document.getElementById('product-price').textContent = `$${product.pret}`;
+      
+      if (product.pret_vechi) {
+        document.getElementById('product-old-price').textContent = `$${product.pret_vechi}`;
+        const discount = Math.round((1 - product.pret / product.pret_vechi) * 100);
+        document.getElementById('product-discount').textContent = `-${discount}%`;
+      } else {
+        document.getElementById('product-old-price').style.display = 'none';
+        document.getElementById('product-discount').style.display = 'none';
+      }
+      
+      // Set rating
+      const ratingElement = document.getElementById('product-rating');
+      ratingElement.innerHTML = '★'.repeat(Math.round(product.rating)) + 
+                               '☆'.repeat(5 - Math.round(product.rating));
+      document.getElementById('product-reviews').textContent = 
+        `(${product.recenzii} recenzii)`;
+      
+      // Set main image
+      document.getElementById('main-product-image').src = product.imagine;
+      document.getElementById('main-product-image').alt = product.nume;
+      
+      // For demo purposes, we'll use the same image for all thumbnails
+      // In a real app, you might have multiple images per product
+      const thumbnailsContainer = document.querySelector('.thumbnail-images');
+      thumbnailsContainer.innerHTML = `
+        <img src="${product.imagine}" alt="${product.nume}" class="thumbnail active">
+        <img src="${product.imagine}" alt="${product.nume}" class="thumbnail">
+        <img src="${product.imagine}" alt="${product.nume}" class="thumbnail">
+      `;
+      
+      // Setup thumbnail click events
+      document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+        thumb.addEventListener('click', function() {
+          document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById('main-product-image').src = this.src;
+        });
+      });
+      
+      // Set description
+      document.getElementById('product-description').textContent = 
+        product.descriere || 'Nu există descriere disponibilă pentru acest produs.';
+      document.getElementById('detailed-description').innerHTML = 
+        `<p>${product.descriere || 'Nu există descriere detaliată disponibilă.'}</p>`;
+      
+      // Set specifications (demo data)
+      const specs = [
+        { name: 'Categorie', value: product.categorie === 'motociclete' ? 'Motocicletă' : 
+                                      product.categorie === 'atv' ? 'ATV' : 'Scuter' },
+        { name: 'Motor', value: '4 timpi, 2 cilindri' },
+        { name: 'Capacitate cilindrică', value: '300cc' },
+        { name: 'Putere maximă', value: '25 kW (34 CP)' },
+        { name: 'Cuplu maxim', value: '27 Nm' },
+        { name: 'Transmisie', value: '6 viteze' },
+        { name: 'Suspensie față', value: 'Telescopică' },
+        { name: 'Suspensie spate', value: 'Monocross' },
+        { name: 'Frane față', value: 'Disc dublu' },
+        { name: 'Frane spate', value: 'Disc simplu' },
+        { name: 'Greutate', value: '165 kg' },
+        { name: 'Înălțime șa', value: '790 mm' },
+        { name: 'Capacitate rezervor', value: '12 litri' }
+      ];
+      
+      const specsContainer = document.getElementById('product-specs');
+      specsContainer.innerHTML = specs.map(spec => `
+        <tr>
+          <td class="spec-name">${spec.name}</td>
+          <td class="spec-value">${spec.value}</td>
+        </tr>
+      `).join('');
+      
+      // Set reviews (demo data)
+      document.getElementById('average-rating').textContent = product.rating.toFixed(1);
+      document.getElementById('total-reviews').textContent = `${product.recenzii} recenzii`;
+      
+      const reviewsList = document.getElementById('reviews-list');
+      reviewsList.innerHTML = `
+        <div class="review">
+          <div class="review-header">
+            <div class="review-author">Ion Popescu</div>
+            <div class="review-rating">★★★★☆</div>
+            <div class="review-date">15 Iunie 2023</div>
+          </div>
+          <div class="review-content">
+            <p>Produsul corespunde așteptărilor, livrare rapidă. Recomand!</p>
+          </div>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <div class="review-author">Maria Ionescu</div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-date">3 Mai 2023</div>
+          </div>
+          <div class="review-content">
+            <p>Foarte mulțumită de achiziție. Calitate excelentă la acest preț.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function displayRelatedProducts(products) {
+      const container = document.getElementById('related-products');
+      
+      if (products.length === 0) {
+        container.innerHTML = '<p>Nu există produse similare disponibile.</p>';
+        return;
+      }
+      
+      container.innerHTML = products.map(product => `
+        <div class="product-item">
+          <a href="product-details.html?id=${product.id}" class="product-link">
+            <div class="product-image">
+              <img src="${product.imagine}" alt="${product.nume}" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3>${product.nume}</h3>
+              <div class="price-container">
+                <span class="current-price">$${product.pret}</span>
+                ${product.pret_vechi ? `<span class="old-price">$${product.pret_vechi}</span>` : ''}
+              </div>
+              <div class="rating">
+                ${'★'.repeat(Math.round(product.rating))}${'☆'.repeat(5 - Math.round(product.rating))}
+                <span class="reviews">(${product.recenzii})</span>
+              </div>
+            </div>
+          </a>
+          <button class="add-to-cart" data-id="${product.id}">
+            <i class="fas fa-shopping-cart"></i> Adaugă în coș
+          </button>
+        </div>
+      `).join('');
+      
+      
+      // Setup add to cart buttons for related products
+      document.querySelectorAll('#related-products .add-to-cart').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const productId = parseInt(this.dataset.id);
+          
+          fetch('products.json')
+            .then(response => response.json())
+            .then(products => {
+              const product = products.find(p => p.id === productId);
+              if (product) {
+                const cartManager = new CartManager();
+                cartManager.addToCart(product);
+                
+                // Update button temporarily
+                this.innerHTML = '<i class="fas fa-check"></i> Adăugat';
+                setTimeout(() => {
+                  this.innerHTML = '<i class="fas fa-shopping-cart"></i> Adaugă în coș';
+                }, 2000);
+                
+                // Update cart count
+                document.getElementById('cart-count').textContent = 
+                  cartManager.cart.reduce((total, item) => total + item.quantity, 0);
+              }
+            });
+        });
+      });
+     
+
+
+
+    }
+  </script>
+</body>
+</html>
